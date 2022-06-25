@@ -8,21 +8,23 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-// import fileSaver from 'file-saver'  //需要保存在json文件启用此行
 import pinyin from 'js-pinyin'
 import Http from 'axios'
+// import fileSaver from 'file-saver'  //需要保存在json文件启用此行
+
 
 export default {
   name: 'App',
   components: {
     HelloWorld
   },
-  methods:{
-    apply(){
+  methods: {
+    apply() {
       // console.log(dataJson);
       let cityData = {};
-      Http.get('https://restapi.amap.com/v3/config/district?key=559c054c3562f094fad36ff1797b7c69&subdistrict=3').then(response=>{
-        if(response.status===200){
+      let key = 'd9e27385778a19c55425dfaac84887e1';  //高德地图 Web服务key
+      Http.get(`https://restapi.amap.com/v3/config/district?key=${key}&subdistrict=3`).then(response => {
+        if (response.status === 200) {
           cityData = response.data.districts[0].districts
         } else {
           console.error('出错了');
@@ -136,7 +138,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.btn{
+
+.btn {
   width: 200px;
   height: 40px;
   font-size: 18px;
@@ -144,8 +147,9 @@ export default {
   border: none;
   border-radius: 5px;
   background-color: #41b883;
-  &:active{
-     background-color: #328f66;
-   }
+
+  &:active {
+    background-color: #328f66;
+  }
 }
 </style>
