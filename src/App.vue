@@ -22,7 +22,7 @@ export default {
     apply() {
       // console.log(dataJson);
       let cityData = {};
-      let key = 'd9e27385778a19c55425dfaac84887e1';  //高德地图 Web服务key
+      let key = '';  //高德地图 Web服务key
       Http.get(`https://restapi.amap.com/v3/config/district?key=${key}&subdistrict=3`).then(response => {
         if (response.status === 200) {
           cityData = response.data.districts[0].districts
